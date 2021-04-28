@@ -1,0 +1,11 @@
+site_name: gps_trackme
+repo_url: https://github.com/osso73/gps_trackme/
+site_url: https://osso73.github.io/gps_trackme/
+edit_uri: blob/main/docs
+site_author: osso73
+theme: readthedocs
+
+nav:
+  - Home: index.md
+  - Changelog: changelog.md
+  - About: about.md
