@@ -1,0 +1,18 @@
+#:include topbar.kv
+#:include latlonlabel.kv
+
+
+Screen:
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        TopBar:
+            id: topbar
+        
+        LatLonLabel:
+            id: label
+
+        Widget:
+            id: map
+

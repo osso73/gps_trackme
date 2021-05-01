@@ -1,0 +1,31 @@
+
+<TopBar>:
+    title: 'GPS TrackMe'
+    elevation: 10
+    spacing: '15dp'
+    
+    ToolbarIcon:
+        icon: "map-marker-check"
+        callback: root.capture_location            
+    
+    ToolbarIcon:
+        icon: root.icon_accuracy
+        callback: root.do_nothing
+    
+    ToolbarIcon:
+        icon: root.icon_gps
+        callback: root.activate_gps
+    
+    ToolbarIcon:
+        icon: "dots-vertical"
+        callback: app.open_settings
+ 
+
+<ToolbarIcon>:
+    halign: 'center'
+    size_hint_x: None
+    width: self.texture_size[0]
+    theme_text_color: 'Custom'
+    text_color: 1,1,1,1
+
+
