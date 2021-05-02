@@ -50,6 +50,10 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href=".">Home</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-the-app">Using the app</a>
+    </li>
     </ul>
                     </li>
                 </ul>
@@ -96,8 +100,36 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="gps_trackme">gps_trackme</h1>
-<p>This will be the documentation page. Nothing to document yet.</p>
+                <h1 id="gps-trackme">GPS TrackMe</h1>
+<p>This is a simple mobile application to register your gps position at a given moment in time.</p>
+<p>The initial idea behind the application is to be able to get the GPS coordinates of your position, at a given time, so you can later know your position exactly. It can be used to know the GPS coordinates when taking a picture (if using a camera without GPS, or with GPS switched off), or to be able to remember a certain location.</p>
+<h2 id="installation">Installation</h2>
+<p>Install it from the .apk application you can find in <a href="https://github.com/osso73/gps_trackme/tree/main/releasess">github repository</a>.</p>
+<p>You can also build it from the source code you will find on the same folder.</p>
+<h2 id="using-the-app">Using the app</h2>
+<p>The usage is very straight forward: when you open the app, you have a screen like this:</p>
+<p><img alt="Screenshot" src="img/screen_gral.jpg" /></p>
+<p><em><strong>Fig. 1</strong>: Main screen.</em></p>
+<p>When launched, the application will immediately start looking for GPS signal, entering into <em>searching</em> mode. The first time it will request the permissions. </p>
+<p>Once the position is found, you will see the coordinates in the label part. In later versions there will be a map in the lower part of the screen, to show your position on the map.</p>
+<p>The title bar includes some icons that allow you several actions:</p>
+<ul>
+<li>
+<p>location track: (feature not yet implemented) this icon will track your current location. Location is tracked on a log file, with the date and time. Later this log file can seen, with all the track points. Note this is not a GPX file, as it will track when you click on the icon.</p>
+</li>
+<li>
+<p>signal icon: this shows the level of accuracy of the signal. No action when clicked.</p>
+</li>
+<li>
+<p>gps icon: to turn GPS on and off. It shows as well the status of GPS, which can be off, searching, or on. Searching meaning that the GPS is turned on, but has not yet received any valid signal.</p>
+</li>
+<li>
+<p>menu icon: (feature not yet implemented) this will open a menu with several options, to access settings, help (e.g. these instructions) and information about the version, etc.</p>
+</li>
+</ul>
+<p>You can change the format of the display by clicking on the label. This switches format of coordinates between "degrees, minutes and seconds", and "decimal degrees" (see example in <em>Fig. 2</em>)</p>
+<p><img alt="Screenshot" src="img/coordinates_deg.jpg" /></p>
+<p><em><strong>Fig. 2</strong>: Coordinates in decimal degrees format.</em></p>
               
             </div>
           </div>
@@ -153,5 +185,5 @@
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-04-29 06:45:45.228472+00:00
+Build Date UTC : 2021-05-02 15:34:18.703104+00:00
 -->
