@@ -36,10 +36,6 @@ class LatLonLabel(MDLabel):
             return True
     
     
-    def update_label(self, lat, lon):
-        self.lat = lat
-        self.lon = lon
-
 
     def get_coordinate(self, coord_type):
         coord = self.lat if coord_type == 'lat' else self.lon

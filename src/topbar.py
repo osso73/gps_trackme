@@ -12,7 +12,7 @@ Created on Fri Apr 30 20:02:38 2021
 from kivymd.uix.toolbar import MDToolbar
 from kivymd.app import MDApp
 from kivy.properties import StringProperty, ObjectProperty
-from kivymd.uix.label import MDIcon
+from kivymd.uix.button import MDIconButton
 
 # my app imports
 from gpshelper import GpsHelper
@@ -42,18 +42,26 @@ class TopBar(MDToolbar):
     gps_status = StringProperty('on')
 
 
-    def open_menu(self, *args):
+    def btn_menu(self, *args):
         pass
 
 
-    def track_route(self, *args):
-        pass
-
-
-    def capture_location(self, *args):
+    def btn_track(self, *args):
         pass
     
     
+    def btn_gps(self, *args):
+        app = MDApp.get_running_app()
+
+        if self.gps_status == 'off':
+            GpsHelper().run()
+            self.gps_status = 'searching'
+
+        else:
+            GpsHelper().stop()
+            self.gps_status = 'off'
+
+
     def on_gps_status(self, *args):
         app = MDApp.get_running_app()
         label = app.root.ids.label
@@ -71,28 +79,7 @@ class TopBar(MDToolbar):
             label.lat = label.lon = NO_GPS_NUM
 
 
-    def activate_gps(self, *args):
-        app = MDApp.get_running_app()
 
-        if self.gps_status == 'off':
-            GpsHelper().run()
-            self.gps_status = 'searching'
-
-        else:
-            GpsHelper().stop()
-            self.gps_status = 'off'
-
-
-    def do_nothing(self, *args):
-        pass
-
-
-class ToolbarIcon(MDIcon):
-    callback = ObjectProperty()
-    
-    def on_touch_down(self, touch):
-        if self.collide_point(*touch.pos):
-            self.callback()
-            return True
-
+class ToolbarIcon(MDIconButton):
+    pass
         
