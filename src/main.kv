@@ -1,6 +1,6 @@
 #:include topbar.kv
 #:include latlonlabel.kv
-
+#:include mymap.kv
 
 Screen:
 
@@ -13,6 +13,5 @@ Screen:
         LatLonLabel:
             id: label
 
-        Widget:
-            id: map
-
+        Map:
+            id: mapview

@@ -19,6 +19,7 @@ class GpsHelper():
 
 
     def run(self):
+
         # Request permissions on Android
         if platform == 'android':
             from android.permissions import Permission, request_permissions
@@ -34,6 +35,7 @@ class GpsHelper():
 
             request_permissions([Permission.ACCESS_COARSE_LOCATION,
                                  Permission.ACCESS_FINE_LOCATION], callback)
+        
 
 
     def update_gps_position(self, *args, **kwargs):
@@ -44,19 +46,22 @@ class GpsHelper():
         app = MDApp.get_running_app()
         topbar = app.root.ids.topbar
         label = app.root.ids.label
+        mymap = app.root.ids.mapview
+        gps_blinker = mymap.ids.blinker
         
         # Update label
         label.lat = my_lat
         label.lon = my_lon
         
+        # Update map and blinker
+        gps_blinker.lat = my_lat
+        gps_blinker.lon = my_lon
+        if mymap.center_map:
+            mymap.center_on(my_lat, my_lon)
+        
         # Update icons for gps and accuracy
-        topbar.icon_gps = 'crosshairs-gps'
-        if accuracy <= 6:
-            topbar.icon_accuracy = 'signal-cellular-3'
-        elif accuracy <= 20:
-            topbar.icon_accuracy = 'signal-cellular-2'
-        else:
-            topbar.icon_accuracy = 'signal-cellular-1'
+        topbar.gps_status = 'on'
+        topbar.accuracy = accuracy
         
 
     def on_auth_status(self, general_status, status_message):        

@@ -22,13 +22,13 @@ source.include_exts = py,png,jpg,kv,atlas
 #source.exclude_exts = spec
 
 # (list) List of directory to exclude (let empty to not exclude anything)
-#source.exclude_dirs = tests, bin
+source.exclude_dirs = tests, bin
 
 # (list) List of exclusions using pattern matching
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 0.1
+version = 0.2
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
@@ -36,7 +36,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy,kivymd,plyer
+requirements = python3,kivy,kivymd,plyer,kivy_garden,mapview,requests,certifi,urllib3,chardet,idna
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -46,10 +46,10 @@ requirements = python3,kivy,kivymd,plyer
 #garden_requirements =
 
 # (str) Presplash of the application
-#presplash.filename = %(source.dir)s/data/presplash.png
+presplash.filename = %(source.dir)s/images/splash.jpg
 
 # (str) Icon of the application
-#icon.filename = %(source.dir)s/data/icon.png
+icon.filename = %(source.dir)s/images/icon.png
 
 # (str) Supported orientation (one of landscape, sensorLandscape, portrait or all)
 orientation = all
@@ -213,7 +213,7 @@ android.permissions = INTERNET, ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION
 #android.uses_library =
 
 # (str) Android logcat filters to use
-#android.logcat_filters = *:S python:D
+android.logcat_filters = *:S python:D
 
 # (bool) Copy library instead of making a libpymodules.so
 #android.copy_libs = 1

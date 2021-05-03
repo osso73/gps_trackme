@@ -1,0 +1,15 @@
+#:import MapView kivy_garden.mapview.MapView
+#:import GpsBlinker gpsblinker.GpsBlinker
+#:include gpsblinker.kv
+
+<Map>:
+    lat: 40.41806663677671
+    lon: -3.703718024611724
+    zoom: 10
+    GpsBlinker:
+        id: blinker
+    
+    
+    MDIconButton:
+        icon: 'crosshairs-gps' if root.center_map else 'crosshairs'
+        on_release: root.center_map = not root.center_map

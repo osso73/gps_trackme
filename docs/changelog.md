@@ -7,6 +7,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## 0.1 - 2021-05-02
 
+Initial release, showing very basic functionality of using GPS and showing position.
+
+
 ## Added
 - GPS activation (permissions, etc.), show current GPS coordinates in the screen
 - Button to switch on/off GPS

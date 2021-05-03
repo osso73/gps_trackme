@@ -11,7 +11,7 @@ Created on Fri Apr 30 20:02:38 2021
 # non-std libraries
 from kivymd.uix.toolbar import MDToolbar
 from kivymd.app import MDApp
-from kivy.properties import StringProperty, ObjectProperty
+from kivy.properties import StringProperty, NumericProperty
 from kivymd.uix.button import MDIconButton
 
 # my app imports
@@ -39,7 +39,8 @@ class TopBar(MDToolbar):
     '''
     icon_gps = StringProperty('crosshairs')
     icon_accuracy = StringProperty('signal-cellular-outline')
-    gps_status = StringProperty('on')
+    gps_status = StringProperty('searching')
+    accuracy = NumericProperty(-1)
 
 
     def btn_menu(self, *args):
@@ -51,8 +52,6 @@ class TopBar(MDToolbar):
     
     
     def btn_gps(self, *args):
-        app = MDApp.get_running_app()
-
         if self.gps_status == 'off':
             GpsHelper().run()
             self.gps_status = 'searching'
@@ -65,19 +64,33 @@ class TopBar(MDToolbar):
     def on_gps_status(self, *args):
         app = MDApp.get_running_app()
         label = app.root.ids.label
+        gps_blinker = app.root.ids.mapview.ids.blinker
 
         if self.gps_status == 'on':
             self.icon_gps = 'crosshairs-gps'
+            gps_blinker.start_blink()
 
         elif self.gps_status == 'searching':
             self.icon_gps = 'crosshairs'
             label.lat = label.lon = SEARCHING_GPS_NUM
+            gps_blinker.stop_blink()
 
         else:
             self.icon_gps = 'crosshairs-off'
-            self.icon_accuracy = 'signal-cellular-outline'
+            self.accuracy = -1
             label.lat = label.lon = NO_GPS_NUM
-
+            gps_blinker.stop_blink()
+    
+    
+    def on_accuracy(self, *args):
+        if self.accuracy == -1:
+            self.icon_accuracy = 'signal-cellular-outline'
+        elif self.accuracy <= 6:
+            self.icon_accuracy = 'signal-cellular-3'
+        elif self.accuracy <= 20:
+            self.icon_accuracy = 'signal-cellular-2'
+        else:
+            self.icon_accuracy = 'signal-cellular-1'
 
 
 class ToolbarIcon(MDIconButton):
