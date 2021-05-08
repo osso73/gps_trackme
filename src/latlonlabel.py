@@ -47,7 +47,7 @@ class LatLonLabel(MDLabel):
             return SEARCHING_GPS_TEXT
         
         if self.fmt == 'deg':
-            return f'{coord:05f}'
+            return f'{coord:0.5f}'
         
         else:    # transform to other coordinates
             if coord_type == 'lat':
@@ -61,6 +61,6 @@ class LatLonLabel(MDLabel):
             m = int(rest)
             s = (rest - m) * 60
             
-            return f'{letter} {d}º {m}\' {s:.3f}"'
+            return f'{letter} {d}º {m}\' {s:.2f}"'
             
     

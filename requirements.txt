@@ -4,7 +4,9 @@ docutils==0.17.1
 idna==2.10
 Kivy==2.0.0
 Kivy-Garden==0.1.4
-kivymd==0.104.1
+kivy-garden.mapview==1.0.5
+kivymd @ https://github.com/kivymd/KivyMD/archive/master.zip
+mapview==1.0.5
 Pillow==8.2.0
 Pygments==2.8.1
 requests==2.25.1

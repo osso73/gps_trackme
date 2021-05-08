@@ -33,7 +33,7 @@ class MainApp(MDApp):
 
 if __name__ == '__main__':
     if platform != 'android':
-        Window.size = (500, 900)
+        Window.size = (400, 750)
     
     MainApp().run()
 

@@ -10,3 +10,4 @@ NO_GPS_TEXT = 'No GPS signal'
 SEARCHING_GPS_TEXT = '...searching GPS...'
 NO_GPS_NUM = 1000
 SEARCHING_GPS_NUM = 2000
+LOG_FILE = 'track.log'

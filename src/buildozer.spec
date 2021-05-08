@@ -28,7 +28,7 @@ source.exclude_dirs = tests, bin
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 0.2
+version = 0.3
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
@@ -36,7 +36,7 @@ version = 0.2
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy,kivymd,plyer,kivy_garden,mapview,requests,certifi,urllib3,chardet,idna
+requirements = python3, kivy==2.0.0, plyer, kivy_garden, mapview, https://github.com/kivymd/KivyMD/archive/master.zip, sdl2_ttf==2.0.15, pillow, requests, urllib3, chardet, idna
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -46,7 +46,7 @@ requirements = python3,kivy,kivymd,plyer,kivy_garden,mapview,requests,certifi,ur
 #garden_requirements =
 
 # (str) Presplash of the application
-presplash.filename = %(source.dir)s/images/splash.jpg
+presplash.filename = %(source.dir)s/images/splash.png
 
 # (str) Icon of the application
 icon.filename = %(source.dir)s/images/icon.png
