@@ -28,11 +28,11 @@ source.exclude_dirs = tests, bin
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 0.3
+#version = 0.4
 
 # (str) Application versioning (method 2)
-# version.regex = __version__ = ['"](.*)['"]
-# version.filename = %(source.dir)s/main.py
+version.regex = VERSION = ['"](.*)['"]
+version.filename = %(source.dir)s/constants.py
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy

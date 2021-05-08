@@ -7,7 +7,7 @@ Created on Tue May  4 22:13:43 2021
 """
 
 # std libraries
-
+import webbrowser
 
 # non-std libraries
 from kivy.properties import StringProperty
@@ -82,11 +82,35 @@ class Menu(MDDropdownMenu):
 
     
     def about(self, *args):
-        print('about', args)
+        def close_msg(button):
+            about.dismiss()
+        
         self.dismiss()
+        
+        msg = f"""
+GPS TrackMe version {VERSION}.
+
+Program written by osso73.
+
+You can find more information on github: 
+https://github.com/osso73/gps_trackme
+        """
+        
+        about = MDDialog(title='About',
+                         type='simple',
+                         text=msg,
+                         buttons=[
+                             MDFlatButton(text='CLOSE',
+                                          on_release=close_msg)
+                             ]
+                         )
+        
+        about.open()
+        
+        
     
     def help(self):
-        print('help')
+        webbrowser.open(HELP_URL)
         self.dismiss()
     
     def settings(self):
@@ -104,20 +128,20 @@ class Menu(MDDropdownMenu):
              'on_release': self.see_log
              },
             {'viewclass': 'MenuItem',
-             'icon': 'language-python',
-             'text': 'About',
-             'on_release': self.about
-             },
-            {'viewclass': 'MenuItem',
              'icon': 'help',
              'text': 'Help',
              'on_release': self.help
              },
             {'viewclass': 'MenuItem',
-             'icon': 'language-python',
+             'icon': 'android',
              'text': 'Settings',
              'on_release': self.settings
-             }
+             },
+            {'viewclass': 'MenuItem',
+             'icon': 'language-python',
+             'text': 'About',
+             'on_release': self.about
+             },
             ]
         
         self.caller = caller

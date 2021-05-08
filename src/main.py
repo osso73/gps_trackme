@@ -19,7 +19,10 @@ from topbar import TopBar
 from latlonlabel import LatLonLabel
 from gpshelper import GpsHelper
 from mymap import Map
+from constants import VERSION
 
+
+__version__ = VERSION
 
 
 class MainApp(MDApp):

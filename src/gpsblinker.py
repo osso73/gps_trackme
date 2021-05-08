@@ -15,7 +15,7 @@ class GpsBlinker(MapMarker):
     
     def _blink(self):
         # Animation that changes the blink size and opacity
-        anim = Animation(outer_opacity=0, blink_size=50)
+        anim = Animation(outer_opacity=0, blink_size=100)
         # When the animation completes, reset the animation, then repeat
         anim.bind(on_complete=self._reset)
         anim.start(self)
@@ -26,6 +26,7 @@ class GpsBlinker(MapMarker):
         self.blink_size = self.default_blink_size
         if self.blinking:
             self._blink()
+
 
     def stop_blink(self):
         self.blinking = False
