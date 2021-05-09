@@ -53,6 +53,16 @@
     <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#using-the-app">Using the app</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#toolbar-and-buttons">Toolbar and buttons</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#label-with-coordinates">Label with coordinates</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#map-section">Map section</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#menu">Menu</a>
+    </li>
+        </ul>
     </li>
     </ul>
                     </li>
@@ -101,35 +111,59 @@
             <div class="section">
               
                 <h1 id="gps-trackme">GPS TrackMe</h1>
-<p>This is a simple mobile application to register your gps position at a given moment in time.</p>
+<p>This is a simple mobile application to register your gps position at a given moment in time. These are the instructions for <em>version 1.0</em>.</p>
 <p>The initial idea behind the application is to be able to get the GPS coordinates of your position, at a given time, so you can later know your position exactly. It can be used to know the GPS coordinates when taking a picture (if using a camera without GPS, or with GPS switched off), or to be able to remember a certain location.</p>
 <h2 id="installation">Installation</h2>
-<p>Install it from the .apk application you can find in <a href="https://github.com/osso73/gps_trackme/tree/main/releasess">github repository</a>.</p>
-<p>You can also build it from the source code you will find on the same folder.</p>
+<p>Install it from the .apk application you can find in <a href="https://github.com/osso73/gps_trackme/tree/main/releases">github repository</a>.</p>
+<p>You can also build it from the source code you will find on the same repository.</p>
 <h2 id="using-the-app">Using the app</h2>
 <p>The usage is very straight forward: when you open the app, you have a screen like this:</p>
-<p><img alt="Screenshot" src="img/screen_gral.jpg" /></p>
+<p><img alt="Screenshot" src="img/screen_gral.jpg" title="Main screen" /></p>
 <p><em><strong>Fig. 1</strong>: Main screen.</em></p>
-<p>When launched, the application will immediately start looking for GPS signal, entering into <em>searching</em> mode. The first time it will request the permissions. </p>
-<p>Once the position is found, you will see the coordinates in the label part. In later versions there will be a map in the lower part of the screen, to show your position on the map.</p>
+<h3 id="toolbar-and-buttons">Toolbar and buttons</h3>
+<p>When launched, the application will immediately start looking for GPS signal, entering into <em>searching</em> mode. The first time it will request the permissions.</p>
+<p>Once the position is found, you will see the coordinates in the label part, and your position is shown on the map with a blinking marker.</p>
 <p>The title bar includes some icons that allow you several actions:</p>
 <ul>
 <li>
-<p>location track: (feature not yet implemented) this icon will track your current location. Location is tracked on a log file, with the date and time. Later this log file can seen, with all the track points. Note this is not a GPX file, as it will track when you click on the icon.</p>
+<p><img alt="" src="img/icon_track.png" title="track icon" /> - this icon tracks your current location. Click on the button to capture the coordinates as they are shown on the screen, along with the timestamp and you can also add a comment. This information is kept in a log, that you can check later from the menu to see the positions that have been captured. Note this is not a GPX file, it will track only one point at a time, and the file is not using GPX format.</p>
 </li>
 <li>
-<p>signal icon: this shows the level of accuracy of the signal. No action when clicked.</p>
+<p><img alt="" src="img/icon_accuracy.png" title="accuracy icon" /> - this shows the level of accuracy of the signal provided by the GPS of the phone. No action when clicked.</p>
 </li>
 <li>
-<p>gps icon: to turn GPS on and off. It shows as well the status of GPS, which can be off, searching, or on. Searching meaning that the GPS is turned on, but has not yet received any valid signal.</p>
+<p><img alt="" src="img/icon_gps.png" title="gps icon" /> - to turn GPS on and off. It shows as well the status of GPS, which can be off, searching, or on. Searching meaning that the GPS is turned on, but has not yet received any valid signal. Note this is only switching off the updates on the application, but does not really switch off the GPS on your phone.</p>
 </li>
 <li>
-<p>menu icon: (feature not yet implemented) this will open a menu with several options, to access settings, help (e.g. these instructions) and information about the version, etc.</p>
+<p><img alt="" src="img/icon_menu.png" title="menu icon" /> - this opens a menu with several options: see the log, to access settings, help (e.g. these instructions) and information about the version, etc. See <a href="#menu">below</a> for a more detailed explanation on each of these options.</p>
 </li>
 </ul>
-<p>You can change the format of the display by clicking on the label. This switches format of coordinates between "degrees, minutes and seconds", and "decimal degrees" (see example in <em>Fig. 2</em>)</p>
-<p><img alt="Screenshot" src="img/coordinates_deg.jpg" /></p>
+<h3 id="label-with-coordinates">Label with coordinates</h3>
+<p>The GPS coordinates can be shown in decimal degrees, or in degrees/minutes/seconds format, as shown in the Fig. 2. To change format just click on the label.</p>
+<p><img alt="Decimal degrees" src="img/coordinates_deg.jpg" title="Decimal degrees" /></p>
 <p><em><strong>Fig. 2</strong>: Coordinates in decimal degrees format.</em></p>
+<h3 id="map-section">Map section</h3>
+<p>The application shows your position on a map with a blinking marker. The marker will keep blinking if the GPS is active; otherwise it will stop blinking.</p>
+<p>By default, the map is centered on your position, but you can de-activate the automatic centering by clicking the gps button (![icon_gps]) on the map, at the bottom left corner, so you can move around and see other areas of the map. Clicking again will activate the automatic centering.</p>
+<h3 id="menu">Menu</h3>
+<p>The menu has several options:</p>
+<ul>
+<li>
+<p><strong>See log</strong>: this will show the log of the points that have been tracked, along with the date and time, and a comment if this was provided. An example is provided in Fig. 3. From this view, you can clear the log by clicking on the <em>CLEAR</em> button, this will remove all entries.</p>
+<p><img alt="Log view" src="img/logview.jpg" title="Log view" /></p>
+<p><em><strong>Fig. 3</strong>: Example of log shown, with the positions, timestamps and comments.</em></p>
+<p>For now, you cannot share the log information with other applications, this feature may be added later in future versions.</p>
+</li>
+<li>
+<p><strong>Help</strong>: will open a browser with these instructions here.</p>
+</li>
+<li>
+<p><strong>Settings</strong>: will open the settings window. This is not yet implemented, for now it shows only the kivy settings. But will have some settings in later versions.</p>
+</li>
+<li>
+<p><strong>About</strong>: will display information about the version, author, and github link.</p>
+</li>
+</ul>
               
             </div>
           </div>
@@ -185,5 +219,5 @@
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-05-02 15:35:52.987282+00:00
+Build Date UTC : 2021-05-09 15:16:16.673208+00:00
 -->
