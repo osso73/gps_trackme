@@ -24,37 +24,50 @@ from kivymd.uix.dialog import MDDialog
 from constants import *
 
 
+
 Builder.load_string(
-    '''
+    r"""
+
 <MenuItem>:
     IconLeftWidget:
         icon: root.icon
 
-
 <LogItem>:
     IconLeftWidget:
         icon: 'map-marker-check'
-''')
+
+""")
 
 
 
 class Menu(MDDropdownMenu):
+    """Create dropdown menu, and execute actions of each of the options"""
+    
     def see_log(self, *args):
+        """Show the log saved."""
+        
         def close_log(button):
+            """Close log"""
+            
             log_view.dismiss()
         
         def clear_log(button):
+            """Clear entries of log file"""
+            
             with open(LOG_FILE, 'wt') as f:
                 pass  # create empty file
             log_view.dismiss()
         
+        # close menu after selection
         self.dismiss()
+        
         try:
             with open(LOG_FILE) as f:
                 lines = f.readlines()
         except FileNotFoundError:
             lines = []
         
+        # create list with all the entries in the log
         items_list = []
         for line in lines:
             lat, lon, timestamp, comment = line[:-1].split(';')
@@ -65,7 +78,7 @@ class Menu(MDDropdownMenu):
                 tertiary_text=comment)
             items_list.append(element)
         
-        
+        # open the dialog, and show the list
         log_view = MDDialog(title='Log view',
                             type='confirmation',
                             items=items_list,
@@ -82,9 +95,14 @@ class Menu(MDDropdownMenu):
 
     
     def about(self, *args):
+        """Show info about author and app github link"""
+        
         def close_msg(button):
+            """Close popup"""
+            
             about.dismiss()
         
+        # close menu after selection
         self.dismiss()
         
         msg = f"""
@@ -110,17 +128,35 @@ https://github.com/osso73/gps_trackme
         
     
     def help(self):
+        """Open help link, to show use instructions"""
+        
         webbrowser.open(HELP_URL)
         self.dismiss()
+
     
     def settings(self):
-        print('settings')
+        """Open settings of the app -- not yet implemented"""
+        
         app = MDApp.get_running_app()
         app.open_settings()
         self.dismiss()
     
     
     def create_menu(self, caller):
+        """
+        Create the dropdown menu, and return it.
+
+        Parameters
+        ----------
+        caller : object
+            Object that makes the call to open the menu.
+
+        Returns
+        -------
+        Menu
+            Once the menu is created, return self.
+
+        """
         self.items = [
             {'viewclass': 'MenuItem',
              'icon': 'view-list',
@@ -151,8 +187,10 @@ https://github.com/osso73/gps_trackme
         
 
 class MenuItem(OneLineIconListItem):
+    """Format each item on the menu, with an icon"""
     icon = StringProperty()
 
 
 class LogItem(ThreeLineIconListItem):
+    """Format each item in the log list, with an icon"""
     pass

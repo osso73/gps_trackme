@@ -6,7 +6,7 @@ Created on Sun May  2 00:01:39 2021
 @author: oriol
 """
 
-VERSION = '1.0'
+VERSION = '1.1'
 
 NO_GPS_TEXT = 'No GPS signal'
 SEARCHING_GPS_TEXT = '...searching GPS...'
